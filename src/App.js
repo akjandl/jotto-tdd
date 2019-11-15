@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import './App.css';
 
+import './App.css';
 import GuessedWords from './GuessedWords';
 import Congrats from './Congrats';
 
