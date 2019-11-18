@@ -27,8 +27,6 @@ class App extends Component {
   };
 }
 
-export const UnconnectedApp = App;
-
 const mapStateToProps = state => {
   return {
     secretWord: state.secretWord,
@@ -44,3 +42,4 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
+export const UnconnectedApp = App;

@@ -5,6 +5,16 @@ import { guessWord } from './actions/index';
 
 class Input extends Component {
 
+  state = { currentGuess: '' };
+
+  submitGuessedWord = (e) => {
+    e.preventDefault();
+    const guessWord = this.state.currentGuess;
+    if (guessWord && guessWord.length > 0) {
+      this.props.guessWord(this.state.currentGuess);
+    }
+  };
+
   render() {
     const contents = this.props.success
       ? null
@@ -14,12 +24,15 @@ class Input extends Component {
             data-test="input-box"
             className="form-control mb-2 mx-sm-3"
             type="text"
+            value={this.state.currentGuess}
+            onChange={(e) => this.setState({ currentGuess: e.target.value })}
             placeholder="enter guess"
           />
           <button
             data-test="submit-button"
             type="submit"
             className="btn btn-primary mb-2"
+            onClick={this.submitGuessedWord}
           >
             Submit
           </button>
@@ -46,3 +59,4 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Input);
+export const UnconnectedInput = Input;
