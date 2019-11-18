@@ -11,9 +11,10 @@ describe('getSecretWord action creator', () => {
   afterEach(() => {
     moxios.uninstall()
   });
-  test('adds response word to state', () => {
+  test('adds response word to state', async () => {
+    // modified from course material to use async/await syntax
     const secretWord  = 'party';
-    const store = storeFactory();
+    const store = storeFactory({});
 
     moxios.wait(() => {
       const request = moxios.requests.mostRecent();
@@ -23,11 +24,8 @@ describe('getSecretWord action creator', () => {
       });
     });
 
-    return store.dispatch(getSecretWord())
-      .then(() => {
-        const newState = store.getState();
-        expect(newState.secretWord).toBe(secretWord);
-      });
-
+    await store.dispatch(getSecretWord());
+    const newState = store.getState();
+    expect(newState.secretWord).toBe(secretWord);
   });
 });
