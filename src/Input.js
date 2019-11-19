@@ -12,6 +12,7 @@ class Input extends Component {
     const guessWord = this.state.currentGuess;
     if (guessWord && guessWord.length > 0) {
       this.props.guessWord(this.state.currentGuess);
+      this.setState({ currentGuess: '' });
     }
   };
 

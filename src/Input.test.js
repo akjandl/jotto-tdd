@@ -95,10 +95,14 @@ describe('`guessWord` action creator call', () => {
     const mockGetWordCallCount = mockGetWord.mock.calls.length;
     expect(mockGetWordCallCount).toBe(1);
   });
-  test('calls `guessWord` with input state as argument', () => {
+  test('calls `guessWord` with input state value as argument', () => {
     const mockGuessWordCalls = mockGetWord.mock.calls;
     const guessWordArgs = mockGuessWordCalls[0];
     expect(guessWordArgs[0]).toBe(guessedWord);
+  });
+  test('input box clears on submit', () => {
+    const inputStateValue = wrapper.state('currentGuess');
+    expect(inputStateValue).toBe('');
   });
 
 });
